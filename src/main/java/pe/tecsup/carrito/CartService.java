@@ -13,6 +13,10 @@ public class CartService {
     }
 
     public void addProduct(Product product) {
+        if (product.getPrice() < 0) {
+            throw new IllegalArgumentException(
+                    "El precio del producto no puede ser negativo: " + product.getPrice());
+        }
         products.add(product);
     }
 }
