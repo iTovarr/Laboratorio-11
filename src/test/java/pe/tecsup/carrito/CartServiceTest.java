@@ -76,7 +76,6 @@ class CartServiceTest {
         // Assert
         assertEquals(108.0, totalConDescuento);
     }
-
     @Test
     @DisplayName("Total igual a 100: NO aplica descuento")
     void getTotalWithDiscount_totalExactamenteCien_sinDescuento() {
@@ -115,24 +114,38 @@ class CartServiceTest {
     @Test
     @DisplayName("R10: No permitir más de 10 productos")
     void addProduct_masDeDiezProductos_lanzaExcepcion() {
+        // Arrange
         for (int i = 0; i < 10; i++) {
             cart.addProduct(new Product("Prod" + i, 10.0));
         }
+
+        // Act + Assert
         assertThrows(IllegalStateException.class, () ->
                 cart.addProduct(new Product("Prod11", 10.0)));
     }
     @Test
     @DisplayName("R11: Retornar cantidad de productos")
     void getProductCount_retornaCantidadCorrecta() {
+        // Arrange
         cart.addProduct(new Product("A", 10.0));
         cart.addProduct(new Product("B", 20.0));
-        assertEquals(2, cart.getProductCount());
+
+        // Act
+        int count = cart.getProductCount();
+
+        // Assert
+        assertEquals(2, count);
     }
     @Test
     @DisplayName("R12: Vaciar carrito")
     void clear_vaciarCarrito_dejaTotalEnCero() {
+        // Arrange
         cart.addProduct(new Product("A", 10.0));
+
+        // Act
         cart.clear();
+
+        // Assert
         assertEquals(0.0, cart.getTotal());
         assertEquals(0, cart.getProductCount());
     }
