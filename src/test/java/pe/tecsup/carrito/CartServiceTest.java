@@ -23,5 +23,17 @@ class CartServiceTest {
         // Assert
         assertEquals(0.0, total);
     }
+    @Test
+    @DisplayName("Agregar producto: total refleja el precio del producto")
+    void addProduct_unProducto_totalIgualAlPrecio() {
+        // Arrange
+        Product laptop = new Product("Laptop", 850.0);
+
+        // Act
+        cart.addProduct(laptop);
+
+        // Assert
+        assertEquals(850.0, cart.getTotal());
+    }
 
 }
