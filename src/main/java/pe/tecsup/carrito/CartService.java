@@ -22,5 +22,11 @@ public class CartService {
         }
         products.add(product);
     }
-
+    public double getTotalWithDiscount() {
+        double total = getTotal();
+        if (total > 100.0) {
+            return total * 0.90;
+        }
+        return total;
+    }
 }
