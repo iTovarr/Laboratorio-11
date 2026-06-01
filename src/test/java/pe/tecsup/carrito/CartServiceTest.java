@@ -35,5 +35,4 @@ class CartServiceTest {
         // Assert
         assertEquals(850.0, cart.getTotal());
     }
-
 }
