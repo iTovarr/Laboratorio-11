@@ -35,4 +35,18 @@ class CartServiceTest {
         // Assert
         assertEquals(850.0, cart.getTotal());
     }
+    @Test
+    @DisplayName("Agregar mismo producto dos veces: total es precio × 2")
+    void addProduct_mismoProductoDosVeces_totalEsDoble() {
+        // Arrange
+        Product mouse = new Product("Mouse", 25.0);
+
+        // Act
+        cart.addProduct(mouse);
+        cart.addProduct(mouse);
+
+        // Assert
+        assertEquals(50.0, cart.getTotal());
+    }
+
 }
