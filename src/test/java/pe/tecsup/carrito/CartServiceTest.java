@@ -1,4 +1,9 @@
 package pe.tecsup.carrito;
 
-public class CartServiceTest {
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("CartService - reglas de negocio del carrito")
+class CartServiceTest {
+    // Aquí escribirás las pruebas
 }
