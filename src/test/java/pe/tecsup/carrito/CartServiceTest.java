@@ -64,4 +64,30 @@ class CartServiceTest {
         assertThrows(NullPointerException.class,
                 () -> cart.addProduct(null));
     }
+    @Test
+    @DisplayName("Total mayor a 100: aplica descuento del 10%")
+    void getTotalWithDiscount_totalMayorACien_aplicaDescuento() {
+        // Arrange
+        cart.addProduct(new Product("TV", 120.0));
+
+        // Act
+        double totalConDescuento = cart.getTotalWithDiscount();
+
+        // Assert
+        assertEquals(108.0, totalConDescuento);
+    }
+
+    @Test
+    @DisplayName("Total igual a 100: NO aplica descuento")
+    void getTotalWithDiscount_totalExactamenteCien_sinDescuento() {
+        // Arrange
+        cart.addProduct(new Product("Audífonos", 100.0));
+
+        // Act
+        double totalConDescuento = cart.getTotalWithDiscount();
+
+        // Assert
+        assertEquals(100.0, totalConDescuento);
+    }
+
 }
