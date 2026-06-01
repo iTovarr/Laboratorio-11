@@ -112,4 +112,13 @@ class CartServiceTest {
         // Act + Assert
         assertDoesNotThrow(() -> cart.removeProduct(fantasma));
     }
+    @Test
+    @DisplayName("R10: No permitir más de 10 productos")
+    void addProduct_masDeDiezProductos_lanzaExcepcion() {
+        for (int i = 0; i < 10; i++) {
+            cart.addProduct(new Product("Prod" + i, 10.0));
+        }
+        assertThrows(IllegalStateException.class, () ->
+                cart.addProduct(new Product("Prod11", 10.0)));
+    }
 }
