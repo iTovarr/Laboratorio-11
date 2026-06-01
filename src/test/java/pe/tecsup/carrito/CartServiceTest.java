@@ -121,4 +121,11 @@ class CartServiceTest {
         assertThrows(IllegalStateException.class, () ->
                 cart.addProduct(new Product("Prod11", 10.0)));
     }
+    @Test
+    @DisplayName("R11: Retornar cantidad de productos")
+    void getProductCount_retornaCantidadCorrecta() {
+        cart.addProduct(new Product("A", 10.0));
+        cart.addProduct(new Product("B", 20.0));
+        assertEquals(2, cart.getProductCount());
+    }
 }
