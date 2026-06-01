@@ -36,4 +36,8 @@ public class CartService {
     public void removeProduct(Product product) {
         products.remove(product);
     }
+
+    public int getProductCount() {
+        return products.size();
+    }
 }
