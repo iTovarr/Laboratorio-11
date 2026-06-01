@@ -22,11 +22,15 @@ public class CartService {
         }
         products.add(product);
     }
+    private static final double DISCOUNT_RATE = 0.10;
+    private static final double DISCOUNT_THRESHOLD = 100.0;
+
     public double getTotalWithDiscount() {
         double total = getTotal();
-        if (total > 100.0) {
-            return total * 0.90;
+        if (total > DISCOUNT_THRESHOLD) {
+            return total * (1 - DISCOUNT_RATE);
         }
         return total;
     }
+
 }
