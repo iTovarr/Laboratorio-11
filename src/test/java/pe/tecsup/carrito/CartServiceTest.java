@@ -89,5 +89,27 @@ class CartServiceTest {
         // Assert
         assertEquals(100.0, totalConDescuento);
     }
+    @Test
+    @DisplayName("Eliminar producto existente: total se reduce correctamente")
+    void removeProduct_productoExistente_totalSeReduce() {
+        // Arrange
+        Product libro = new Product("Libro", 40.0);
+        cart.addProduct(libro);
+        cart.addProduct(new Product("Cuaderno", 15.0));
 
+        // Act
+        cart.removeProduct(libro);
+
+        // Assert
+        assertEquals(15.0, cart.getTotal());
+    }
+    @Test
+    @DisplayName("Eliminar producto inexistente: no lanza excepción")
+    void removeProduct_productoNoExiste_sinExcepcion() {
+        // Arrange
+        Product fantasma = new Product("Fantasma", 99.0);
+
+        // Act + Assert
+        assertDoesNotThrow(() -> cart.removeProduct(fantasma));
+    }
 }
