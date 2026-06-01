@@ -128,4 +128,12 @@ class CartServiceTest {
         cart.addProduct(new Product("B", 20.0));
         assertEquals(2, cart.getProductCount());
     }
+    @Test
+    @DisplayName("R12: Vaciar carrito")
+    void clear_vaciarCarrito_dejaTotalEnCero() {
+        cart.addProduct(new Product("A", 10.0));
+        cart.clear();
+        assertEquals(0.0, cart.getTotal());
+        assertEquals(0, cart.getProductCount());
+    }
 }
