@@ -48,5 +48,14 @@ class CartServiceTest {
         // Assert
         assertEquals(50.0, cart.getTotal());
     }
+    @Test
+    @DisplayName("Precio negativo: debe lanzar IllegalArgumentException")
+    void addProduct_precioNegativo_lanzaExcepcion() {
+        // Arrange
+        Product invalido = new Product("Item inválido", -10.0);
 
+        // Act + Assert
+        assertThrows(IllegalArgumentException.class,
+                () -> cart.addProduct(invalido));
+    }
 }
