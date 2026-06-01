@@ -58,4 +58,10 @@ class CartServiceTest {
         assertThrows(IllegalArgumentException.class,
                 () -> cart.addProduct(invalido));
     }
+    @Test
+    @DisplayName("Producto nulo: debe lanzar NullPointerException")
+    void addProduct_productoNulo_lanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class,
+                () -> cart.addProduct(null));
+    }
 }
